@@ -1,0 +1,60 @@
+# Translation Template for Lemon Media Company Theme
+# Copyright (C) 2026 Tahseen Ashrafi
+# Language Translation Template File (.pot)
+msgid ""
+msgstr ""
+"Project-Id-Version: Lemon Media Company 1.0.0\n"
+"Report-Msgid-Bugs-To: https://lemonmediaco.com/\n"
+"POT-Creation-Date: 2026-09-17 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Tahseen Ashrafi <tahseenashrafi29@gmail.com>\n"
+"Language-Team: English <info@lemonmediaco.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Handcrafted\n"
+
+msgid "Talk To Our Team"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Our Work"
+msgstr ""
+
+msgid "Our Clients"
+msgstr ""
+
+msgid "Our Story"
+msgstr ""
+
+msgid "Our Services"
+msgstr ""
+
+msgid "Join Our Team"
+msgstr ""
+
+msgid "Contact Us"
+msgstr ""
+
+msgid "Our Social Media Services"
+msgstr ""
+
+msgid "Content Creation"
+msgstr ""
+
+msgid "Photography & Videography"
+msgstr ""
+
+msgid "Performance Marketing"
+msgstr ""
+
+msgid "Influencer Marketing"
+msgstr ""
+
+msgid "Website Development"
+msgstr ""
+
+msgid "Brand And Packaging Design"
+msgstr ""
