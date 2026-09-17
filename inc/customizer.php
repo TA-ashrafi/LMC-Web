@@ -26,8 +26,8 @@ function lemon_media_customize_register( $wp_customize ) {
         'section'     => 'lemon_media_header_section',
         'type'        => 'number',
         'input_attrs' => array(
-            'min'  => 20,
-            'max'  => 120,
+            'min'  => 15,
+            'max'  => 200,
             'step' => 1,
         ),
     ) );
@@ -191,6 +191,54 @@ function lemon_media_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'stat_4_num', array( 'label' => __( 'Stat 4 Value', 'lemon-media' ), 'section' => 'lemon_media_clients_section' ) );
     $wp_customize->add_setting( 'stat_4_lbl', array( 'default' => 'Disciplines, one team', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'stat_4_lbl', array( 'label' => __( 'Stat 4 Label', 'lemon-media' ), 'section' => 'lemon_media_clients_section' ) );
+
+
+    // 4b. Trusted By Leaders Carousel Section
+    $wp_customize->add_section( 'lemon_media_leaders_section', array(
+        'title'    => __( 'Trusted By Leaders Showcase', 'lemon-media' ),
+        'priority' => 31,
+    ) );
+
+    $wp_customize->add_setting( 'leaders_badge', array(
+        'default'           => __( 'Testimonials', 'lemon-media' ),
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'leaders_badge', array(
+        'label'    => __( 'Badge Label', 'lemon-media' ),
+        'section'  => 'lemon_media_leaders_section',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'leaders_title', array(
+        'default'           => __( 'Trusted by leaders from various industries', 'lemon-media' ),
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'leaders_title', array(
+        'label'    => __( 'Section Title', 'lemon-media' ),
+        'section'  => 'lemon_media_leaders_section',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'leaders_subtitle', array(
+        'default'           => __( 'Learn why professionals trust our solutions to complete their customer journeys.', 'lemon-media' ),
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'leaders_subtitle', array(
+        'label'    => __( 'Subtitle / Description', 'lemon-media' ),
+        'section'  => 'lemon_media_leaders_section',
+        'type'     => 'textarea',
+    ) );
+
+    for ( $i = 1; $i <= 8; $i++ ) {
+        $wp_customize->add_setting( "leader_avatar_{$i}", array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ) );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "leader_avatar_{$i}", array(
+            'label'    => sprintf( __( 'Leader / Client Image %d', 'lemon-media' ), $i ),
+            'section'  => 'lemon_media_leaders_section',
+        ) ) );
+    }
 
 
     // 5. Selected Work Section

@@ -54,14 +54,27 @@ $logo_height = get_theme_mod( 'logo_max_height', '45' );
                         )
                     );
                 } else {
+                    $our_work_page    = get_page_by_path( 'our-work' );
+                    $our_clients_page = get_page_by_path( 'our-clients' );
+                    $our_story_page   = get_page_by_path( 'our-story' );
+                    $our_services_page= get_page_by_path( 'our-services' );
+                    $join_team_page   = get_page_by_path( 'join-our-team' );
+                    $contact_page     = get_page_by_path( 'contact-us' );
+
+                    $work_url    = $our_work_page ? get_permalink( $our_work_page->ID ) : home_url( '/#work' );
+                    $clients_url = $our_clients_page ? get_permalink( $our_clients_page->ID ) : home_url( '/#clients' );
+                    $story_url   = $our_story_page ? get_permalink( $our_story_page->ID ) : home_url( '/#story' );
+                    $services_url= $our_services_page ? get_permalink( $our_services_page->ID ) : home_url( '/#services' );
+                    $join_url    = $join_team_page ? get_permalink( $join_team_page->ID ) : home_url( '/#join-team' );
+                    $contact_url = $contact_page ? get_permalink( $contact_page->ID ) : home_url( '/#contact' );
                     ?>
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'lemon-media' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/#work' ) ); ?>"><?php esc_html_e( 'Our Work', 'lemon-media' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/#clients' ) ); ?>"><?php esc_html_e( 'Our Clients', 'lemon-media' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/#story' ) ); ?>"><?php esc_html_e( 'Our Story', 'lemon-media' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/#services' ) ); ?>"><?php esc_html_e( 'Our Services', 'lemon-media' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/#join-team' ) ); ?>"><?php esc_html_e( 'Join Our Team', 'lemon-media' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact Us', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( $work_url ); ?>"><?php esc_html_e( 'Our Work', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( $clients_url ); ?>"><?php esc_html_e( 'Our Clients', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( $story_url ); ?>"><?php esc_html_e( 'Our Story', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( $services_url ); ?>"><?php esc_html_e( 'Our Services', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( $join_url ); ?>"><?php esc_html_e( 'Join Our Team', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'Contact Us', 'lemon-media' ); ?></a>
                     <?php
                 }
                 ?>

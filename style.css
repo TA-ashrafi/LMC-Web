@@ -213,6 +213,36 @@ button { font: inherit; }
 .stats strong { font-family: Syne, sans-serif; font-size: clamp(3rem, 5vw, 5.2rem); font-weight: 600; line-height: 1; }
 .stats span { color: var(--muted-foreground); margin-top: 12px; font-size: 13px; }
 
+/* Leaders Showcase Carousel Section */
+.leaders-showcase-section { background: #ffffff; padding-block: 90px; border-block: 1px solid var(--border); overflow: hidden; position: relative; }
+.leaders-inner { flex-direction: column; align-items: center; text-align: center; display: flex; }
+.leaders-cards-wrap { width: 100%; max-width: 1100px; margin-bottom: 40px; position: relative; overflow: hidden; padding-block: 20px; }
+.leaders-cards-grid { display: flex; gap: 20px; width: max-content; animation: leaderScroll 35s linear infinite; }
+.leaders-cards-wrap:hover .leaders-cards-grid { animation-play-state: paused; }
+.leader-card { width: 130px; height: 160px; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; flex-shrink: 0; background: #f3f4f6; }
+.leader-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 18px 40px rgba(0,0,0,0.15); }
+.leader-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Staggered Positional Offsets for visually organic floating feel */
+.card-pos-1 { transform: translateY(0px); }
+.card-pos-2 { transform: translateY(-18px); }
+.card-pos-3 { transform: translateY(12px); }
+.card-pos-4 { transform: translateY(-24px); }
+.card-pos-5 { transform: translateY(8px); }
+.card-pos-6 { transform: translateY(-15px); }
+.card-pos-7 { transform: translateY(18px); }
+.card-pos-8 { transform: translateY(-10px); }
+
+.leaders-content { max-width: 680px; margin: 0 auto; }
+.leaders-badge { display: inline-block; background: #e5e7eb; color: var(--foreground); padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 20px; }
+.leaders-content h2 { font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 700; line-height: 1.1; margin-bottom: 16px; color: #111827; }
+.leaders-content p { color: #6b7280; font-size: 16px; line-height: 1.6; margin: 0 auto; max-width: 540px; }
+
+@keyframes leaderScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .section-block { padding-block: 68px 120px; }
 .section-heading { border-bottom: 1px solid var(--border); justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 48px; padding-bottom: 28px; display: flex; }
 .section-heading h2 { margin: 13px 0px 0px; font-size: clamp(2.7rem, 5vw, 5.5rem); font-weight: 600; line-height: 0.98; }

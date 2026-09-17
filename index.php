@@ -96,6 +96,49 @@ get_header();
         </div>
     </section>
 
+    <!-- Trusted by Leaders Section -->
+    <section class="leaders-showcase-section">
+        <div class="shell leaders-inner">
+            <div class="leaders-cards-wrap">
+                <div class="leaders-cards-grid">
+                    <?php
+                    $fallback_avatars = array(
+                        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
+                        'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80',
+                    );
+
+                    // Print cards twice for infinite seamless CSS scrolling loop
+                    for ( $loop = 0; $loop < 2; $loop++ ) :
+                        for ( $i = 1; $i <= 8; $i++ ) :
+                            $img = get_theme_mod( "leader_avatar_{$i}" );
+                            if ( empty( $img ) ) {
+                                $img = $fallback_avatars[ $i - 1 ];
+                            }
+                            ?>
+                            <div class="leader-card card-pos-<?php echo $i; ?>">
+                                <img src="<?php echo esc_url( $img ); ?>" alt="<?php esc_attr_e( 'Client / Leader', 'lemon-media' ); ?>" loading="lazy">
+                            </div>
+                        <?php endfor;
+                    endfor; ?>
+                </div>
+            </div>
+
+            <div class="leaders-content">
+                <?php if ( get_theme_mod( 'leaders_badge', __( 'Testimonials', 'lemon-media' ) ) ) : ?>
+                    <span class="leaders-badge"><?php echo esc_html( get_theme_mod( 'leaders_badge', __( 'Testimonials', 'lemon-media' ) ) ); ?></span>
+                <?php endif; ?>
+                <h2><?php echo esc_html( get_theme_mod( 'leaders_title', __( 'Trusted by leaders from various industries', 'lemon-media' ) ) ); ?></h2>
+                <p><?php echo esc_html( get_theme_mod( 'leaders_subtitle', __( 'Learn why professionals trust our solutions to complete their customer journeys.', 'lemon-media' ) ) ); ?></p>
+            </div>
+        </div>
+    </section>
+
     <!-- Our Work Section -->
     <section id="work" class="shell section-block">
         <div class="section-heading">
