@@ -8,12 +8,21 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+$logo_height = get_theme_mod( 'logo_max_height', '45' );
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    <style>
+        .custom-logo, .site-logo img, .brand img {
+            max-height: <?php echo esc_attr( $logo_height ); ?>px !important;
+            width: auto;
+            object-fit: contain;
+        }
+    </style>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

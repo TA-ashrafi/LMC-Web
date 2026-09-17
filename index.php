@@ -69,30 +69,30 @@ get_header();
     <!-- Capability Band -->
     <div class="capability-band">
         <div class="shell capability-inner">
-            <span class="eyebrow-label"><?php esc_html_e( 'Everything in-house', 'lemon-media' ); ?></span>
+            <span class="eyebrow-label"><?php echo esc_html( get_theme_mod( 'capability_label', __( 'Everything in-house', 'lemon-media' ) ) ); ?></span>
             <div>
-                Content <i>·</i> Performance <i>·</i> Influencer <i>·</i> Branding <i>·</i> Packaging <i>·</i> Web <i>·</i> Talent
+                <?php echo esc_html( get_theme_mod( 'capability_items', __( 'Content · Performance · Influencer · Branding · Packaging · Web · Talent', 'lemon-media' ) ) ); ?>
             </div>
         </div>
     </div>
 
-    <!-- Our Clients Section -->
+    <!-- Our Clients & Stats Section -->
     <section id="clients" class="shell stats" aria-label="<?php esc_attr_e( 'Our Clients & Credibility', 'lemon-media' ); ?>">
         <div>
-            <strong>350+</strong>
-            <span><?php echo esc_html( get_theme_mod( 'clients_title', __( 'Brands worked with', 'lemon-media' ) ) ); ?></span>
+            <strong><?php echo esc_html( get_theme_mod( 'stat_1_num', '350+' ) ); ?></strong>
+            <span><?php echo esc_html( get_theme_mod( 'stat_1_lbl', __( 'Brands worked with', 'lemon-media' ) ) ); ?></span>
         </div>
         <div>
-            <strong>25K+</strong>
-            <span><?php esc_html_e( 'Leads & followers generated', 'lemon-media' ); ?></span>
+            <strong><?php echo esc_html( get_theme_mod( 'stat_2_num', '25K+' ) ); ?></strong>
+            <span><?php echo esc_html( get_theme_mod( 'stat_2_lbl', __( 'Leads & followers generated', 'lemon-media' ) ) ); ?></span>
         </div>
         <div>
-            <strong>02</strong>
-            <span><?php esc_html_e( 'Studios — Delhi & Mumbai', 'lemon-media' ); ?></span>
+            <strong><?php echo esc_html( get_theme_mod( 'stat_3_num', '02' ) ); ?></strong>
+            <span><?php echo esc_html( get_theme_mod( 'stat_3_lbl', __( 'Studios — Delhi & Mumbai', 'lemon-media' ) ) ); ?></span>
         </div>
         <div>
-            <strong>07</strong>
-            <span><?php esc_html_e( 'Disciplines, one team', 'lemon-media' ); ?></span>
+            <strong><?php echo esc_html( get_theme_mod( 'stat_4_num', '07' ) ); ?></strong>
+            <span><?php echo esc_html( get_theme_mod( 'stat_4_lbl', __( 'Disciplines, one team', 'lemon-media' ) ) ); ?></span>
         </div>
     </section>
 
@@ -112,33 +112,47 @@ get_header();
         <div class="work-grid">
             <article class="project project-one">
                 <div class="project-image">
-                    <div style="background:linear-gradient(135deg, #374151, #1f2937); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.5rem; text-align:center; padding:20px;">
-                        Citrus &amp; Co. Campaign
-                    </div>
+                    <?php
+                    $p1_img = get_theme_mod( 'project_1_image' );
+                    if ( $p1_img ) :
+                        ?>
+                        <img src="<?php echo esc_url( $p1_img ); ?>" alt="<?php echo esc_attr( get_theme_mod( 'project_1_title', 'Citrus & Co.' ) ); ?>">
+                    <?php else : ?>
+                        <div style="background:linear-gradient(135deg, #374151, #1f2937); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.5rem; text-align:center; padding:20px;">
+                            <?php echo esc_html( get_theme_mod( 'project_1_title', 'Citrus & Co.' ) ); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="project-meta">
                     <div>
-                        <p class="project-number">01 / Brand launch</p>
-                        <h3>Citrus &amp; Co.</h3>
-                        <span>Branding · Packaging · Social</span>
+                        <p class="project-number"><?php echo esc_html( get_theme_mod( 'project_1_num', '01 / Brand launch' ) ); ?></p>
+                        <h3><?php echo esc_html( get_theme_mod( 'project_1_title', 'Citrus & Co.' ) ); ?></h3>
+                        <span><?php echo esc_html( get_theme_mod( 'project_1_services', 'Branding · Packaging · Social' ) ); ?></span>
                     </div>
-                    <strong>1.2M<small>campaign views</small></strong>
+                    <strong><?php echo esc_html( get_theme_mod( 'project_1_stat_num', '1.2M' ) ); ?><small><?php echo esc_html( get_theme_mod( 'project_1_stat_lbl', 'campaign views' ) ); ?></small></strong>
                 </div>
             </article>
 
             <article class="project project-two">
                 <div class="project-image">
-                    <div style="background:linear-gradient(135deg, #1f2937, #111827); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.5rem; text-align:center; padding:20px;">
-                        Velvet Skin Campaign
-                    </div>
+                    <?php
+                    $p2_img = get_theme_mod( 'project_2_image' );
+                    if ( $p2_img ) :
+                        ?>
+                        <img src="<?php echo esc_url( $p2_img ); ?>" alt="<?php echo esc_attr( get_theme_mod( 'project_2_title', 'Velvet Skin' ) ); ?>">
+                    <?php else : ?>
+                        <div style="background:linear-gradient(135deg, #1f2937, #111827); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.5rem; text-align:center; padding:20px;">
+                            <?php echo esc_html( get_theme_mod( 'project_2_title', 'Velvet Skin' ) ); ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <div class="project-meta">
                     <div>
-                        <p class="project-number">02 / D2C growth</p>
-                        <h3>Velvet Skin</h3>
-                        <span>Web · Content · Performance</span>
+                        <p class="project-number"><?php echo esc_html( get_theme_mod( 'project_2_num', '02 / D2C growth' ) ); ?></p>
+                        <h3><?php echo esc_html( get_theme_mod( 'project_2_title', 'Velvet Skin' ) ); ?></h3>
+                        <span><?php echo esc_html( get_theme_mod( 'project_2_services', 'Web · Content · Performance' ) ); ?></span>
                     </div>
-                    <strong>3.4×<small>return on ad spend</small></strong>
+                    <strong><?php echo esc_html( get_theme_mod( 'project_2_stat_num', '3.4×' ) ); ?><small><?php echo esc_html( get_theme_mod( 'project_2_stat_lbl', 'return on ad spend' ) ); ?></small></strong>
                 </div>
             </article>
         </div>
@@ -195,9 +209,16 @@ get_header();
     <!-- Our Story Section / Studio -->
     <section id="story" class="shell studio-section">
         <div class="studio-image">
-            <div style="background: linear-gradient(135deg, #111827, #1f2937); aspect-ratio:4/5; border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.8rem; text-align:center; padding:30px;">
-                Lemon Media Studio
-            </div>
+            <?php
+            $studio_img = get_theme_mod( 'studio_image' );
+            if ( $studio_img ) :
+                ?>
+                <img src="<?php echo esc_url( $studio_img ); ?>" alt="<?php esc_attr_e( 'Lemon Media Studio', 'lemon-media' ); ?>">
+            <?php else : ?>
+                <div style="background: linear-gradient(135deg, #111827, #1f2937); aspect-ratio:4/5; border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.8rem; text-align:center; padding:30px;">
+                    Lemon Media Studio
+                </div>
+            <?php endif; ?>
             <span class="image-stamp"><?php esc_html_e( 'Ideas grow better together', 'lemon-media' ); ?></span>
         </div>
 
@@ -210,12 +231,12 @@ get_header();
             <blockquote>“We don’t make more content. We make every piece mean more.”</blockquote>
             <div class="city-grid">
                 <div>
-                    <strong>Delhi</strong>
-                    <span>Strategy &amp; production</span>
+                    <strong><?php echo esc_html( get_theme_mod( 'studio_city_1_name', 'Delhi' ) ); ?></strong>
+                    <span><?php echo esc_html( get_theme_mod( 'studio_city_1_desc', 'Strategy & production' ) ); ?></span>
                 </div>
                 <div>
-                    <strong>Mumbai</strong>
-                    <span>Media &amp; talent</span>
+                    <strong><?php echo esc_html( get_theme_mod( 'studio_city_2_name', 'Mumbai' ) ); ?></strong>
+                    <span><?php echo esc_html( get_theme_mod( 'studio_city_2_desc', 'Media & talent' ) ); ?></span>
                 </div>
             </div>
         </div>

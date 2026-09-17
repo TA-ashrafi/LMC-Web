@@ -171,15 +171,16 @@ button { font: inherit; }
 }
 .site-header { backdrop-filter: blur(16px); }
 .nav-row { justify-content: space-between; align-items: center; height: 72px; display: flex; }
-.brand { align-items: center; gap: 11px; font-family: Syne, sans-serif; font-size: 17px; font-weight: 700; display: inline-flex; }
+.brand { align-items: center; gap: 11px; font-family: Syne, sans-serif; font-size: 17px; font-weight: 700; display: inline-flex; max-height: 52px; }
 .brand em { color: var(--accent); font-style: normal; font-weight: 500; }
-.lemon-mark { background: var(--primary); border-radius: 50% 48% 52% 46%; place-items: center; width: 34px; height: 34px; display: grid; position: relative; transform: rotate(-10deg); }
+.brand img, .custom-logo-link img, .custom-logo { max-height: 45px; width: auto; object-fit: contain; display: inline-block; vertical-align: middle; }
+.lemon-mark { background: var(--primary); border-radius: 50% 48% 52% 46%; place-items: center; width: 34px; height: 34px; display: grid; position: relative; transform: rotate(-10deg); flex-shrink: 0; }
 .lemon-mark::after { content: ""; background: var(--foreground); border-radius: 100% 0px; width: 8px; height: 5px; position: absolute; top: -2px; right: 3px; transform: rotate(24deg); }
 .lemon-mark span { border: 1.5px solid var(--foreground); opacity: 0.7; border-radius: 50%; width: 12px; height: 12px; }
-.desktop-nav { align-items: center; gap: 34px; font-size: 13px; font-weight: 600; display: flex; }
-.desktop-nav a { transition: opacity 0.2s; }
+.desktop-nav { align-items: center; gap: 28px; font-size: 13px; font-weight: 600; display: flex; }
+.desktop-nav a { transition: opacity 0.2s; white-space: nowrap; }
 .desktop-nav a:hover { opacity: 0.5; }
-.dark-button, .lemon-button, .line-button { border-radius: 999px; justify-content: center; align-items: center; gap: 9px; min-height: 44px; padding: 0px 22px; font-size: 13px; font-weight: 700; transition: transform 0.25s, background 0.25s, color 0.25s; display: inline-flex; }
+.dark-button, .lemon-button, .line-button { border-radius: 999px; justify-content: center; align-items: center; gap: 9px; min-height: 44px; padding: 0px 22px; font-size: 13px; font-weight: 700; transition: transform 0.25s, background 0.25s, color 0.25s; display: inline-flex; white-space: nowrap; flex-shrink: 0; }
 .dark-button { background: var(--foreground); color: var(--background); }
 .dark-button:hover, .lemon-button:hover { transform: translateY(-2px); }
 .lemon-button { background: var(--primary); color: var(--primary-foreground); }
@@ -274,7 +275,7 @@ button { font: inherit; }
 .process-grid { grid-template-columns: repeat(4, 1fr); gap: 0px; margin: 0px; padding: 0px; list-style: none; display: grid; }
 .process-grid li { border-left: 1px solid var(--border); flex-direction: column; min-height: 300px; padding: 30px; display: flex; }
 .process-grid li:last-child { border-right: 1px solid var(--border); }
-.process-grid span { color: var(--accent); font-size: 11px; font-weight: 700; }
+.process-grid span { color: var(--accent); font-size: 18px; font-weight: 800; font-family: Syne, sans-serif; }
 .process-grid h3 { margin: auto 0px 13px; font-family: Syne, sans-serif; font-size: 28px; }
 .process-grid p { color: var(--muted-foreground); margin: 0px; font-size: 13px; line-height: 1.65; }
 
