@@ -12,216 +12,291 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<!-- Hero Banner Section -->
-<section id="home" class="hero-section">
-    <div class="container">
-        <div class="hero-grid">
-            <div class="hero-content">
-                <h1><?php echo esc_html( get_theme_mod( 'hero_title', __( 'Elevate Your Brand With Lemon Media', 'lemon-media' ) ) ); ?></h1>
-                <p><?php echo esc_html( get_theme_mod( 'hero_subtitle', __( 'We craft data-driven social media strategies, high-converting performance campaigns, stunning photography, and cutting-edge web design.', 'lemon-media' ) ) ); ?></p>
-                <div class="hero-btns">
-                    <?php if ( get_theme_mod( 'hero_btn_1_text', __( 'Explore Our Work', 'lemon-media' ) ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'hero_btn_1_url', '#work' ) ); ?>" class="btn-primary">
-                            <?php echo esc_html( get_theme_mod( 'hero_btn_1_text', __( 'Explore Our Work', 'lemon-media' ) ) ); ?>
-                        </a>
-                    <?php endif; ?>
-
-                    <?php if ( get_theme_mod( 'hero_btn_2_text', __( 'Our Services', 'lemon-media' ) ) ) : ?>
-                        <a href="<?php echo esc_url( get_theme_mod( 'hero_btn_2_url', '#services' ) ); ?>" class="btn-secondary">
-                            <?php echo esc_html( get_theme_mod( 'hero_btn_2_text', __( 'Our Services', 'lemon-media' ) ) ); ?>
-                        </a>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="hero-image">
+<main>
+    <!-- Hero Banner Section -->
+    <section id="top" class="shell hero">
+        <div class="hero-copy reveal">
+            <p class="eyebrow">
+                <span></span> <?php echo esc_html( get_theme_mod( 'hero_eyebrow', __( 'Creative growth agency — Delhi · Mumbai', 'lemon-media' ) ) ); ?>
+            </p>
+            <h1>
                 <?php
-                $hero_img = get_theme_mod( 'hero_image' );
-                if ( $hero_img ) :
-                    ?>
-                    <img src="<?php echo esc_url( $hero_img ); ?>" alt="<?php esc_attr_e( 'Lemon Media Agency', 'lemon-media' ); ?>">
-                <?php else : ?>
-                    <div style="background: linear-gradient(135deg, #1f2937, #374151); border-radius:16px; height:360px; display:flex; align-items:center; justify-center:center; text-align:center; padding:40px; border:1px solid rgba(255,255,255,0.1);">
-                        <div>
-                            <span style="font-size:3rem; display:block; margin-bottom:10px;">🚀</span>
-                            <h3 style="color:#fff; font-size:1.8rem;"><?php esc_html_e( 'Digital Agency Excellence', 'lemon-media' ); ?></h3>
-                            <p style="color:#9ca3af; font-size:0.95rem; margin-top:8px;"><?php esc_html_e( 'Customizable image upload available in Theme Customizer', 'lemon-media' ); ?></p>
-                        </div>
-                    </div>
+                $hero_title = get_theme_mod( 'hero_title', __( 'We make brands impossible to ignore.', 'lemon-media' ) );
+                echo wp_kses_post( $hero_title );
+                ?>
+            </h1>
+            <p class="hero-intro">
+                <?php echo esc_html( get_theme_mod( 'hero_subtitle', __( 'A full-service studio for brands that want to be seen, chosen and remembered. Strategy, content, performance, branding and digital — all under one roof.', 'lemon-media' ) ) ); ?>
+            </p>
+            <div class="hero-actions">
+                <?php if ( get_theme_mod( 'hero_btn_1_text', __( 'See the work', 'lemon-media' ) ) ) : ?>
+                    <a class="lemon-button" href="<?php echo esc_url( get_theme_mod( 'hero_btn_1_url', '#work' ) ); ?>">
+                        <?php echo esc_html( get_theme_mod( 'hero_btn_1_text', __( 'See the work', 'lemon-media' ) ) ); ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-right" aria-hidden="true"><path d="m7 7 10 10"></path><path d="M17 7v10H7"></path></svg>
+                    </a>
+                <?php endif; ?>
+
+                <?php if ( get_theme_mod( 'hero_btn_2_text', __( 'Explore services', 'lemon-media' ) ) ) : ?>
+                    <a class="line-button" href="<?php echo esc_url( get_theme_mod( 'hero_btn_2_url', '#services' ) ); ?>">
+                        <?php echo esc_html( get_theme_mod( 'hero_btn_2_text', __( 'Explore services', 'lemon-media' ) ) ); ?>
+                    </a>
                 <?php endif; ?>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Our Clients Section -->
-<section id="clients" class="section section-bg-light">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle"><?php esc_html_e( 'TRUST & CREDIBILITY', 'lemon-media' ); ?></span>
-            <h2 class="section-title"><?php echo esc_html( get_theme_mod( 'clients_title', __( 'Trusted By Industry Leaders', 'lemon-media' ) ) ); ?></h2>
-        </div>
-        <div class="clients-grid">
+        <figure class="hero-visual reveal delay-1">
             <?php
-            $clients_raw = get_theme_mod( 'clients_list', 'Apex Global, Nexa Tech, Urban Style, Bloom Organics, Vantage Media, Crest Commerce' );
-            $clients_arr = explode( ',', $clients_raw );
-            foreach ( $clients_arr as $client_name ) :
-                $name = trim( $client_name );
-                if ( ! empty( $name ) ) :
-                    ?>
-                    <div class="client-item">
-                        ✨ <?php echo esc_html( $name ); ?>
-                    </div>
-                <?php
-                endif;
-            endforeach;
-            ?>
-        </div>
-    </div>
-</section>
-
-<!-- Our Story Section -->
-<section id="story" class="section">
-    <div class="container">
-        <div class="story-grid">
-            <div class="story-content">
-                <span class="section-subtitle"><?php echo esc_html( get_theme_mod( 'story_subtitle', __( 'OUR STORY', 'lemon-media' ) ) ); ?></span>
-                <h2><?php echo esc_html( get_theme_mod( 'story_title', __( 'We are a creative agency dedicated to scaling ambitious brands', 'lemon-media' ) ) ); ?></h2>
-                <p style="color:var(--text-muted); line-height:1.8; margin-bottom:20px;">
-                    <?php echo esc_html( get_theme_mod( 'story_desc', __( 'Lemon Media Company was founded with a single mission: to bring fresh, creative, and measurable digital growth to modern businesses. From high-impact video content to precision influencer campaigns, we tell stories that turn viewers into lifelong customers.', 'lemon-media' ) ) ); ?>
-                </p>
-                <div class="story-stats">
-                    <div>
-                        <span class="stat-number"><?php echo esc_html( get_theme_mod( 'story_stat_1_num', '250+' ) ); ?></span>
-                        <span class="stat-label"><?php echo esc_html( get_theme_mod( 'story_stat_1_lbl', 'Projects Completed' ) ); ?></span>
-                    </div>
-                    <div>
-                        <span class="stat-number"><?php echo esc_html( get_theme_mod( 'story_stat_2_num', '50M+' ) ); ?></span>
-                        <span class="stat-label"><?php echo esc_html( get_theme_mod( 'story_stat_2_lbl', 'Organic Reach' ) ); ?></span>
-                    </div>
-                    <div>
-                        <span class="stat-number"><?php echo esc_html( get_theme_mod( 'story_stat_3_num', '98%' ) ); ?></span>
-                        <span class="stat-label"><?php echo esc_html( get_theme_mod( 'story_stat_3_lbl', 'Client Satisfaction' ) ); ?></span>
-                    </div>
-                </div>
-            </div>
-            <div class="story-card" style="background:var(--light-bg); border-radius:16px; padding:40px; border:1px solid var(--border-color);">
-                <h3 style="margin-bottom:15px; font-size:1.5rem;"><?php esc_html_e( 'Why Choose Lemon Media?', 'lemon-media' ); ?></h3>
-                <ul style="list-style:none; line-height:2.2;">
-                    <li>✓ <strong>360° Digital Capability:</strong> Full stack content, ads, design & code.</li>
-                    <li>✓ <strong>Data & ROI Focused:</strong> Clear metrics, continuous optimizations.</li>
-                    <li>✓ <strong>Creative Storytellers:</strong> Content built for social virality & high engagement.</li>
-                    <li>✓ <strong>Dedicated Strategy Team:</strong> Personal attention for every project.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Our Services Section (7 core services) -->
-<section id="services" class="section section-bg-light">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle"><?php esc_html_e( 'WHAT WE DO', 'lemon-media' ); ?></span>
-            <h2 class="section-title"><?php esc_html_e( 'Our Specialised Services', 'lemon-media' ); ?></h2>
-        </div>
-
-        <?php
-        $services_slugs = array(
-            1 => 'social-media',
-            2 => 'content-creation',
-            3 => 'photography-videography',
-            4 => 'performance-marketing',
-            5 => 'influencer-marketing',
-            6 => 'website-development',
-            7 => 'brand-packaging-design',
-        );
-
-        $defaults = array(
-            1 => array( 'title' => 'Our Social Media Services', 'desc' => 'End-to-end social media management, community engagement, and viral strategy.' ),
-            2 => array( 'title' => 'Content Creation', 'desc' => 'Captivating graphics, copywriting, reels, and video storytelling designed to convert.' ),
-            3 => array( 'title' => 'Photography & Videography', 'desc' => 'Professional studio photography and high-end video shoots for products & events.' ),
-            4 => array( 'title' => 'Performance Marketing', 'desc' => 'Data-driven Meta Ads, Google Ads, and funnel optimization to maximize ROI.' ),
-            5 => array( 'title' => 'Influencer Marketing', 'desc' => 'Strategic creator partnerships and viral brand campaigns that amplify reach.' ),
-            6 => array( 'title' => 'Website Development', 'desc' => 'Custom, high-performing websites and digital platforms built for seamless UX.' ),
-            7 => array( 'title' => 'Brand And Packaging Design', 'desc' => 'Memorable brand identities, logos, guidelines, and premium product packaging.' ),
-        );
-        ?>
-
-        <div class="services-grid">
-            <?php for ( $i = 1; $i <= 7; $i++ ) :
-                $stitle = get_theme_mod( "service_{$i}_title", $defaults[$i]['title'] );
-                $sdesc  = get_theme_mod( "service_{$i}_desc", $defaults[$i]['desc'] );
-                $slug   = $services_slugs[$i];
+            $hero_img = get_theme_mod( 'hero_image' );
+            if ( $hero_img ) :
                 ?>
-                <div id="<?php echo esc_attr( $slug ); ?>" class="service-card">
-                    <div class="service-icon">0<?php echo $i; ?></div>
-                    <h3><?php echo esc_html( $stitle ); ?></h3>
-                    <p><?php echo esc_html( $sdesc ); ?></p>
+                <img src="<?php echo esc_url( $hero_img ); ?>" alt="<?php esc_attr_e( 'Lemon Media Agency', 'lemon-media' ); ?>">
+            <?php else : ?>
+                <div style="background: linear-gradient(135deg, #1f2937, #374151); border-radius:var(--radius); height:520px; display:flex; align-items:center; justify-content:center; text-align:center; padding:40px; border:1px solid rgba(255,255,255,0.1);">
+                    <div>
+                        <span style="font-size:3rem; display:block; margin-bottom:10px;">🍋</span>
+                        <h3 style="color:#fff; font-size:1.8rem; font-family:Syne, sans-serif;"><?php esc_html_e( 'Fresh thinking. Sharp results.', 'lemon-media' ); ?></h3>
+                        <p style="color:#9ca3af; font-size:0.95rem; margin-top:8px;"><?php esc_html_e( 'Upload custom hero image in Customizer', 'lemon-media' ); ?></p>
+                    </div>
                 </div>
-            <?php endfor; ?>
-        </div>
-    </div>
-</section>
+            <?php endif; ?>
+            <figcaption>
+                <span><?php esc_html_e( 'Fresh thinking.', 'lemon-media' ); ?></span>
+                <span><?php esc_html_e( 'Sharp results.', 'lemon-media' ); ?></span>
+            </figcaption>
+        </figure>
+    </section>
 
-<!-- Our Work Section -->
-<section id="work" class="section">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle"><?php esc_html_e( 'PORTFOLIO', 'lemon-media' ); ?></span>
-            <h2 class="section-title"><?php esc_html_e( 'Featured Case Studies & Work', 'lemon-media' ); ?></h2>
-        </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-card">
-                <div class="portfolio-content">
-                    <span class="portfolio-category"><?php esc_html_e( 'Social Media & Content', 'lemon-media' ); ?></span>
-                    <h3 class="portfolio-title"><?php esc_html_e( 'Urban Style Viral Launch Campaign', 'lemon-media' ); ?></h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem;"><?php esc_html_e( 'Achieved 5M+ organic impressions and 12x ROI in 30 days.', 'lemon-media' ); ?></p>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-content">
-                    <span class="portfolio-category"><?php esc_html_e( 'Website Development', 'lemon-media' ); ?></span>
-                    <h3 class="portfolio-title"><?php esc_html_e( 'Nexa Tech E-Commerce Platform', 'lemon-media' ); ?></h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem;"><?php esc_html_e( 'Rebuilt custom shop experience boosting conversions by 45%.', 'lemon-media' ); ?></p>
-                </div>
-            </div>
-            <div class="portfolio-card">
-                <div class="portfolio-content">
-                    <span class="portfolio-category"><?php esc_html_e( 'Brand & Packaging', 'lemon-media' ); ?></span>
-                    <h3 class="portfolio-title"><?php esc_html_e( 'Bloom Organics Rebrand', 'lemon-media' ); ?></h3>
-                    <p style="color:var(--text-muted); font-size:0.9rem;"><?php esc_html_e( 'Designed eco-friendly packaging and complete brand guidelines.', 'lemon-media' ); ?></p>
-                </div>
+    <!-- Capability Band -->
+    <div class="capability-band">
+        <div class="shell capability-inner">
+            <span class="eyebrow-label"><?php esc_html_e( 'Everything in-house', 'lemon-media' ); ?></span>
+            <div>
+                Content <i>·</i> Performance <i>·</i> Influencer <i>·</i> Branding <i>·</i> Packaging <i>·</i> Web <i>·</i> Talent
             </div>
         </div>
     </div>
-</section>
 
-<!-- Join Our Team & Contact CTA Section -->
-<section id="join-team" class="section section-bg-dark">
-    <div class="container" style="text-align:center;">
-        <span class="section-subtitle"><?php esc_html_e( 'CAREERS & COLLABORATION', 'lemon-media' ); ?></span>
-        <h2 class="section-title" style="color:#fff; margin-bottom:20px;"><?php esc_html_e( 'Want To Join Our Creative Team Or Work Together?', 'lemon-media' ); ?></h2>
-        <p style="max-width:650px; margin: 0 auto 30px; color:#d1d5db;">
-            <?php esc_html_e( 'We are always looking for passionate content creators, strategists, designers, and developers. Reach out to discuss open positions or new client projects.', 'lemon-media' ); ?>
-        </p>
-        <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap;" id="contact">
-            <a href="mailto:<?php echo esc_attr( get_theme_mod( 'footer_email', 'contact@lemonmediaco.com' ) ); ?>" class="btn-primary">
-                <?php esc_html_e( 'Email Our Team', 'lemon-media' ); ?>
+    <!-- Our Clients Section -->
+    <section id="clients" class="shell stats" aria-label="<?php esc_attr_e( 'Our Clients & Credibility', 'lemon-media' ); ?>">
+        <div>
+            <strong>350+</strong>
+            <span><?php echo esc_html( get_theme_mod( 'clients_title', __( 'Brands worked with', 'lemon-media' ) ) ); ?></span>
+        </div>
+        <div>
+            <strong>25K+</strong>
+            <span><?php esc_html_e( 'Leads & followers generated', 'lemon-media' ); ?></span>
+        </div>
+        <div>
+            <strong>02</strong>
+            <span><?php esc_html_e( 'Studios — Delhi & Mumbai', 'lemon-media' ); ?></span>
+        </div>
+        <div>
+            <strong>07</strong>
+            <span><?php esc_html_e( 'Disciplines, one team', 'lemon-media' ); ?></span>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="work" class="shell section-block">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow-label"><?php esc_html_e( 'Selected work', 'lemon-media' ); ?></p>
+                <h2><?php esc_html_e( 'Built to perform.', 'lemon-media' ); ?><br><em><?php esc_html_e( 'Designed to last.', 'lemon-media' ); ?></em></h2>
+            </div>
+            <a class="text-link" href="#contact">
+                <?php esc_html_e( 'Build yours', 'lemon-media' ); ?>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
             </a>
-            <a href="tel:<?php echo esc_attr( get_theme_mod( 'footer_phone', '+91 98765 43210' ) ); ?>" class="btn-secondary">
-                <?php esc_html_e( 'Call Us Directly', 'lemon-media' ); ?>
-            </a>
         </div>
-    </div>
-</section>
 
-<!-- Latest Posts Loop Section -->
-<?php if ( have_posts() ) : ?>
-<section class="section section-bg-light">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle"><?php esc_html_e( 'LATEST NEWS', 'lemon-media' ); ?></span>
-            <h2 class="section-title"><?php esc_html_e( 'From Our Blog', 'lemon-media' ); ?></h2>
+        <div class="work-grid">
+            <article class="project project-one">
+                <div class="project-image">
+                    <div style="background:linear-gradient(135deg, #374151, #1f2937); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.5rem; text-align:center; padding:20px;">
+                        Citrus &amp; Co. Campaign
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div>
+                        <p class="project-number">01 / Brand launch</p>
+                        <h3>Citrus &amp; Co.</h3>
+                        <span>Branding · Packaging · Social</span>
+                    </div>
+                    <strong>1.2M<small>campaign views</small></strong>
+                </div>
+            </article>
+
+            <article class="project project-two">
+                <div class="project-image">
+                    <div style="background:linear-gradient(135deg, #1f2937, #111827); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.5rem; text-align:center; padding:20px;">
+                        Velvet Skin Campaign
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div>
+                        <p class="project-number">02 / D2C growth</p>
+                        <h3>Velvet Skin</h3>
+                        <span>Web · Content · Performance</span>
+                    </div>
+                    <strong>3.4×<small>return on ad spend</small></strong>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Our Services Section (7 core services) -->
+    <section id="services" class="dark-section">
+        <div class="shell services-layout">
+            <div class="services-intro">
+                <p class="eyebrow-label"><?php esc_html_e( 'What we do', 'lemon-media' ); ?></p>
+                <h2><?php esc_html_e( 'One team.', 'lemon-media' ); ?><br><em><?php esc_html_e( 'Every touchpoint.', 'lemon-media' ); ?></em></h2>
+                <p><?php esc_html_e( 'No hand-offs, no diluted thinking. Specialists work together from first brief to final result.', 'lemon-media' ); ?></p>
+            </div>
+
+            <?php
+            $services_slugs = array(
+                1 => 'social-media',
+                2 => 'content-creation',
+                3 => 'photography-videography',
+                4 => 'performance-marketing',
+                5 => 'influencer-marketing',
+                6 => 'website-development',
+                7 => 'brand-packaging-design',
+            );
+
+            $defaults = array(
+                1 => array( 'title' => 'Our Social Media Services', 'desc' => 'Campaigns, films, stills & social storytelling' ),
+                2 => array( 'title' => 'Content Creation', 'desc' => 'Captivating graphics, copywriting, reels, and video content' ),
+                3 => array( 'title' => 'Photography & Videography', 'desc' => 'Professional studio photography and high-end video production' ),
+                4 => array( 'title' => 'Performance Marketing', 'desc' => 'Paid media, CRO & data-driven conversion funnels' ),
+                5 => array( 'title' => 'Influencer Marketing', 'desc' => 'Strategic creator partnerships and viral activations' ),
+                6 => array( 'title' => 'Website Development', 'desc' => 'Fast, expressive, conversion-led sites' ),
+                7 => array( 'title' => 'Brand And Packaging Design', 'desc' => 'Positioning, voice, visual systems & shelf presence' ),
+            );
+            ?>
+
+            <ol class="service-list">
+                <?php for ( $i = 1; $i <= 7; $i++ ) :
+                    $stitle = get_theme_mod( "service_{$i}_title", $defaults[$i]['title'] );
+                    $sdesc  = get_theme_mod( "service_{$i}_desc", $defaults[$i]['desc'] );
+                    $slug   = $services_slugs[$i];
+                    ?>
+                    <li id="<?php echo esc_attr( $slug ); ?>">
+                        <span>0<?php echo $i; ?></span>
+                        <h3><?php echo esc_html( $stitle ); ?></h3>
+                        <p><?php echo esc_html( $sdesc ); ?></p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                    </li>
+                <?php endfor; ?>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Our Story Section / Studio -->
+    <section id="story" class="shell studio-section">
+        <div class="studio-image">
+            <div style="background: linear-gradient(135deg, #111827, #1f2937); aspect-ratio:4/5; border-radius:var(--radius); display:flex; align-items:center; justify-content:center; color:#fff; font-family:Syne, sans-serif; font-size:1.8rem; text-align:center; padding:30px;">
+                Lemon Media Studio
+            </div>
+            <span class="image-stamp"><?php esc_html_e( 'Ideas grow better together', 'lemon-media' ); ?></span>
+        </div>
+
+        <div class="studio-copy">
+            <p class="eyebrow-label"><?php echo esc_html( get_theme_mod( 'story_subtitle', __( 'The studio', 'lemon-media' ) ) ); ?></p>
+            <h2><?php echo esc_html( get_theme_mod( 'story_title', __( 'Close-knit by design. Big in ambition.', 'lemon-media' ) ) ); ?></h2>
+            <p>
+                <?php echo esc_html( get_theme_mod( 'story_desc', __( 'Strategy, design, media and production sit side by side in Delhi and Mumbai. Fewer layers mean sharper decisions, faster making and work that holds together from brief to broadcast.', 'lemon-media' ) ) ); ?>
+            </p>
+            <blockquote>“We don’t make more content. We make every piece mean more.”</blockquote>
+            <div class="city-grid">
+                <div>
+                    <strong>Delhi</strong>
+                    <span>Strategy &amp; production</span>
+                </div>
+                <div>
+                    <strong>Mumbai</strong>
+                    <span>Media &amp; talent</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section">
+        <div class="shell">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow-label"><?php esc_html_e( 'How we work', 'lemon-media' ); ?></p>
+                    <h2><?php esc_html_e( 'Clarity before', 'lemon-media' ); ?><br><em><?php esc_html_e( 'creativity.', 'lemon-media' ); ?></em></h2>
+                </div>
+                <p class="section-note"><?php esc_html_e( 'A rigorous process that keeps brave ideas commercially grounded.', 'lemon-media' ); ?></p>
+            </div>
+
+            <ol class="process-grid">
+                <li>
+                    <span>01</span>
+                    <h3><?php esc_html_e( 'Discover', 'lemon-media' ); ?></h3>
+                    <p><?php esc_html_e( 'We unpack the category, audience and commercial problem before touching a pixel.', 'lemon-media' ); ?></p>
+                </li>
+                <li>
+                    <span>02</span>
+                    <h3><?php esc_html_e( 'Define', 'lemon-media' ); ?></h3>
+                    <p><?php esc_html_e( 'One sharp idea becomes the strategic and visual north star for every channel.', 'lemon-media' ); ?></p>
+                </li>
+                <li>
+                    <span>03</span>
+                    <h3><?php esc_html_e( 'Create', 'lemon-media' ); ?></h3>
+                    <p><?php esc_html_e( 'Our in-house team turns the system into content, design, media and digital experiences.', 'lemon-media' ); ?></p>
+                </li>
+                <li>
+                    <span>04</span>
+                    <h3><?php esc_html_e( 'Compound', 'lemon-media' ); ?></h3>
+                    <p><?php esc_html_e( 'We launch, learn and optimise against the metrics that actually move your business.', 'lemon-media' ); ?></p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Quote Band -->
+    <section class="quote-band">
+        <div class="shell quote-inner">
+            <span>“</span>
+            <blockquote><?php esc_html_e( 'They didn’t just refresh how we looked. They sharpened how the whole business showed up.', 'lemon-media' ); ?></blockquote>
+            <p><?php esc_html_e( '— Brand partner, New Delhi', 'lemon-media' ); ?></p>
+        </div>
+    </section>
+
+    <!-- Contact CTA / Join Our Team Section -->
+    <section id="join-team" class="contact-section">
+        <div class="shell contact-inner" id="contact">
+            <p class="eyebrow-label"><?php esc_html_e( 'Your next chapter starts here', 'lemon-media' ); ?></p>
+            <h2>
+                <?php
+                $contact_title = get_theme_mod( 'contact_title', __( 'Let’s grow something bright.', 'lemon-media' ) );
+                echo wp_kses_post( $contact_title );
+                ?>
+            </h2>
+            <p><?php echo esc_html( get_theme_mod( 'contact_desc', __( 'Tell us where you want your brand to go. We’ll bring the strategy, creative fire and honest route to get there.', 'lemon-media' ) ) ); ?></p>
+            <div class="contact-actions">
+                <a class="dark-button" href="<?php echo esc_url( get_theme_mod( 'contact_whatsapp_url', 'https://wa.me/919711559909' ) ); ?>" target="_blank" rel="noreferrer">
+                    <?php esc_html_e( 'Start a conversation', 'lemon-media' ); ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                </a>
+                <a class="email-link" href="mailto:<?php echo esc_attr( get_theme_mod( 'footer_email', 'nayanika@lemonmediaco.com' ) ); ?>">
+                    <?php echo esc_html( get_theme_mod( 'footer_email', 'nayanika@lemonmediaco.com' ) ); ?>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Posts Loop Section -->
+    <?php if ( have_posts() ) : ?>
+    <section class="shell section-block">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow-label"><?php esc_html_e( 'Latest News', 'lemon-media' ); ?></p>
+                <h2><?php esc_html_e( 'From Our Blog', 'lemon-media' ); ?></h2>
+            </div>
         </div>
         <div class="posts-layout no-sidebar">
             <div class="posts-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:30px;">
@@ -236,9 +311,9 @@ get_header();
         <div style="margin-top:30px; text-align:center;">
             <?php the_posts_pagination(); ?>
         </div>
-    </div>
-</section>
-<?php endif; ?>
+    </section>
+    <?php endif; ?>
+</main>
 
 <?php
 get_footer();

@@ -14,16 +14,10 @@ if ( ! function_exists( 'lemon_media_setup' ) ) :
      * Sets up theme defaults and registers support for various WordPress features.
      */
     function lemon_media_setup() {
-        // Add default posts and comments RSS feed links to head.
         add_theme_support( 'automatic-feed-links' );
-
-        // Let WordPress manage the document title.
         add_theme_support( 'title-tag' );
-
-        // Enable support for Post Thumbnails on posts and pages.
         add_theme_support( 'post-thumbnails' );
 
-        // Custom Logo support
         add_theme_support(
             'custom-logo',
             array(
@@ -34,7 +28,6 @@ if ( ! function_exists( 'lemon_media_setup' ) ) :
             )
         );
 
-        // Register Primary Nav Menu
         register_nav_menus(
             array(
                 'primary' => __( 'Primary Menu', 'lemon-media' ),
@@ -42,10 +35,6 @@ if ( ! function_exists( 'lemon_media_setup' ) ) :
             )
         );
 
-        /*
-         * Switch default core markup for search form, comment form, and comments
-         * to output valid HTML5.
-         */
         add_theme_support(
             'html5',
             array(
@@ -59,17 +48,16 @@ if ( ! function_exists( 'lemon_media_setup' ) ) :
             )
         );
 
-        // Add theme support for selective refresh for widgets.
         add_theme_support( 'customize-selective-refresh-widgets' );
     }
 endif;
 add_action( 'after_setup_theme', 'lemon_media_setup' );
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
+ * Set content width in pixels.
  */
 function lemon_media_content_width() {
-    $GLOBALS['content_width'] = apply_filters( 'lemon_media_content_width', 1200 );
+    $GLOBALS['content_width'] = apply_filters( 'lemon_media_content_width', 1280 );
 }
 add_action( 'after_setup_theme', 'lemon_media_content_width', 0 );
 
@@ -107,8 +95,8 @@ add_action( 'widgets_init', 'lemon_media_widgets_init' );
  * Enqueue scripts and styles.
  */
 function lemon_media_scripts() {
-    // Google Fonts - Outfit & Inter
-    wp_enqueue_style( 'lemon-media-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap', array(), null );
+    // Google Fonts - Plus Jakarta Sans & Syne
+    wp_enqueue_style( 'lemon-media-fonts', 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:ital,wght@0,500;0,600;0,700;1,500&display=swap', array(), null );
 
     // Core stylesheet
     wp_enqueue_style( 'lemon-media-style', get_stylesheet_uri(), array(), '1.0.0' );

@@ -11,14 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function lemon_media_customize_register( $wp_customize ) {
 
-    // 1. Header CTA Section
+    // 1. Header Section
     $wp_customize->add_section( 'lemon_media_header_section', array(
         'title'    => __( 'Header Settings', 'lemon-media' ),
         'priority' => 20,
     ) );
 
     $wp_customize->add_setting( 'header_cta_btn_text', array(
-        'default'           => __( 'Talk To Our Team', 'lemon-media' ),
+        'default'           => __( 'Start a project', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'header_cta_btn_text', array(
@@ -44,8 +44,18 @@ function lemon_media_customize_register( $wp_customize ) {
         'priority' => 25,
     ) );
 
+    $wp_customize->add_setting( 'hero_eyebrow', array(
+        'default'           => __( 'Creative growth agency — Delhi · Mumbai', 'lemon-media' ),
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'hero_eyebrow', array(
+        'label'    => __( 'Hero Eyebrow Text', 'lemon-media' ),
+        'section'  => 'lemon_media_hero_section',
+        'type'     => 'text',
+    ) );
+
     $wp_customize->add_setting( 'hero_title', array(
-        'default'           => __( 'Elevate Your Brand With Lemon Media', 'lemon-media' ),
+        'default'           => __( 'We make brands impossible to ignore.', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'hero_title', array(
@@ -55,7 +65,7 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'hero_subtitle', array(
-        'default'           => __( 'We craft data-driven social media strategies, high-converting performance campaigns, stunning photography, and cutting-edge web design.', 'lemon-media' ),
+        'default'           => __( 'A full-service studio for brands that want to be seen, chosen and remembered. Strategy, content, performance, branding and digital — all under one roof.', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_textarea_field',
     ) );
     $wp_customize->add_control( 'hero_subtitle', array(
@@ -65,7 +75,7 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'hero_btn_1_text', array(
-        'default'           => __( 'Explore Our Work', 'lemon-media' ),
+        'default'           => __( 'See the work', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'hero_btn_1_text', array(
@@ -85,7 +95,7 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'hero_btn_2_text', array(
-        'default'           => __( 'Our Services', 'lemon-media' ),
+        'default'           => __( 'Explore services', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'hero_btn_2_text', array(
@@ -114,24 +124,24 @@ function lemon_media_customize_register( $wp_customize ) {
     ) ) );
 
 
-    // 3. Our Story Section
+    // 3. Our Story / Studio Section
     $wp_customize->add_section( 'lemon_media_story_section', array(
-        'title'    => __( 'Our Story / About Settings', 'lemon-media' ),
+        'title'    => __( 'Our Story / Studio Settings', 'lemon-media' ),
         'priority' => 30,
     ) );
 
     $wp_customize->add_setting( 'story_subtitle', array(
-        'default'           => __( 'OUR STORY', 'lemon-media' ),
+        'default'           => __( 'The studio', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'story_subtitle', array(
-        'label'    => __( 'Subtitle', 'lemon-media' ),
+        'label'    => __( 'Subtitle / Eyebrow', 'lemon-media' ),
         'section'  => 'lemon_media_story_section',
         'type'     => 'text',
     ) );
 
     $wp_customize->add_setting( 'story_title', array(
-        'default'           => __( 'We are a creative agency dedicated to scaling ambitious brands', 'lemon-media' ),
+        'default'           => __( 'Close-knit by design. Big in ambition.', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'story_title', array(
@@ -141,7 +151,7 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'story_desc', array(
-        'default'           => __( 'Lemon Media Company was founded with a single mission: to bring fresh, creative, and measurable digital growth to modern businesses. From high-impact video content to precision influencer campaigns, we tell stories that turn viewers into lifelong customers.', 'lemon-media' ),
+        'default'           => __( 'Strategy, design, media and production sit side by side in Delhi and Mumbai. Fewer layers mean sharper decisions, faster making and work that holds together from brief to broadcast.', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_textarea_field',
     ) );
     $wp_customize->add_control( 'story_desc', array(
@@ -149,21 +159,6 @@ function lemon_media_customize_register( $wp_customize ) {
         'section'  => 'lemon_media_story_section',
         'type'     => 'textarea',
     ) );
-
-    $wp_customize->add_setting( 'story_stat_1_num', array( 'default' => '250+', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'story_stat_1_num', array( 'label' => __( 'Stat 1 Value', 'lemon-media' ), 'section' => 'lemon_media_story_section' ) );
-    $wp_customize->add_setting( 'story_stat_1_lbl', array( 'default' => 'Projects Completed', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'story_stat_1_lbl', array( 'label' => __( 'Stat 1 Label', 'lemon-media' ), 'section' => 'lemon_media_story_section' ) );
-
-    $wp_customize->add_setting( 'story_stat_2_num', array( 'default' => '50M+', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'story_stat_2_num', array( 'label' => __( 'Stat 2 Value', 'lemon-media' ), 'section' => 'lemon_media_story_section' ) );
-    $wp_customize->add_setting( 'story_stat_2_lbl', array( 'default' => 'Organic Reach', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'story_stat_2_lbl', array( 'label' => __( 'Stat 2 Label', 'lemon-media' ), 'section' => 'lemon_media_story_section' ) );
-
-    $wp_customize->add_setting( 'story_stat_3_num', array( 'default' => '98%', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'story_stat_3_num', array( 'label' => __( 'Stat 3 Value', 'lemon-media' ), 'section' => 'lemon_media_story_section' ) );
-    $wp_customize->add_setting( 'story_stat_3_lbl', array( 'default' => 'Client Satisfaction', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'story_stat_3_lbl', array( 'label' => __( 'Stat 3 Label', 'lemon-media' ), 'section' => 'lemon_media_story_section' ) );
 
 
     // 4. Our Services Section (7 specified services)
@@ -173,13 +168,13 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $services_list = array(
-        1 => array( 'title' => 'Our Social Media Services', 'desc' => 'End-to-end social media management, community engagement, and viral strategy.' ),
-        2 => array( 'title' => 'Content Creation', 'desc' => 'Captivating graphics, copywriting, reels, and video storytelling designed to convert.' ),
-        3 => array( 'title' => 'Photography & Videography', 'desc' => 'Professional studio photography and high-end video shoots for products & events.' ),
-        4 => array( 'title' => 'Performance Marketing', 'desc' => 'Data-driven Meta Ads, Google Ads, and funnel optimization to maximize ROI.' ),
-        5 => array( 'title' => 'Influencer Marketing', 'desc' => 'Strategic creator partnerships and viral brand campaigns that amplify reach.' ),
-        6 => array( 'title' => 'Website Development', 'desc' => 'Custom, high-performing websites and digital platforms built for seamless UX.' ),
-        7 => array( 'title' => 'Brand And Packaging Design', 'desc' => 'Memorable brand identities, logos, guidelines, and premium product packaging.' ),
+        1 => array( 'title' => 'Our Social Media Services', 'desc' => 'Campaigns, films, stills & social storytelling' ),
+        2 => array( 'title' => 'Content Creation', 'desc' => 'Captivating graphics, copywriting, reels, and video content' ),
+        3 => array( 'title' => 'Photography & Videography', 'desc' => 'Professional studio photography and high-end video production' ),
+        4 => array( 'title' => 'Performance Marketing', 'desc' => 'Paid media, CRO & data-driven conversion funnels' ),
+        5 => array( 'title' => 'Influencer Marketing', 'desc' => 'Strategic creator partnerships and viral activations' ),
+        6 => array( 'title' => 'Website Development', 'desc' => 'Fast, expressive, conversion-led sites' ),
+        7 => array( 'title' => 'Brand And Packaging Design', 'desc' => 'Positioning, voice, visual systems & shelf presence' ),
     );
 
     foreach ( $services_list as $i => $service ) {
@@ -233,14 +228,51 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
 
-    // 6. Footer & Contact Details
+    // 6. Contact Us / Join Our Team Section
+    $wp_customize->add_section( 'lemon_media_contact_section', array(
+        'title'    => __( 'Contact & Careers Settings', 'lemon-media' ),
+        'priority' => 45,
+    ) );
+
+    $wp_customize->add_setting( 'contact_title', array(
+        'default'           => __( 'Let’s grow something bright.', 'lemon-media' ),
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'contact_title', array(
+        'label'    => __( 'Contact Heading', 'lemon-media' ),
+        'section'  => 'lemon_media_contact_section',
+        'type'     => 'text',
+    ) );
+
+    $wp_customize->add_setting( 'contact_desc', array(
+        'default'           => __( 'Tell us where you want your brand to go. We’ll bring the strategy, creative fire and honest route to get there.', 'lemon-media' ),
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'contact_desc', array(
+        'label'    => __( 'Contact Description', 'lemon-media' ),
+        'section'  => 'lemon_media_contact_section',
+        'type'     => 'textarea',
+    ) );
+
+    $wp_customize->add_setting( 'contact_whatsapp_url', array(
+        'default'           => 'https://wa.me/919711559909',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'contact_whatsapp_url', array(
+        'label'    => __( 'WhatsApp Contact Link', 'lemon-media' ),
+        'section'  => 'lemon_media_contact_section',
+        'type'     => 'url',
+    ) );
+
+
+    // 7. Footer Settings
     $wp_customize->add_section( 'lemon_media_footer_section', array(
-        'title'    => __( 'Footer & Contact Settings', 'lemon-media' ),
+        'title'    => __( 'Footer Settings', 'lemon-media' ),
         'priority' => 50,
     ) );
 
     $wp_customize->add_setting( 'footer_about_text', array(
-        'default'           => __( 'Lemon Media Company is a full-service creative agency helping brands scale through strategic content, digital marketing, and design.', 'lemon-media' ),
+        'default'           => __( 'Full-service digital marketing and talent management agency.', 'lemon-media' ),
         'sanitize_callback' => 'sanitize_textarea_field',
     ) );
     $wp_customize->add_control( 'footer_about_text', array(
@@ -250,7 +282,7 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'footer_email', array(
-        'default'           => 'contact@lemonmediaco.com',
+        'default'           => 'nayanika@lemonmediaco.com',
         'sanitize_callback' => 'sanitize_email',
     ) );
     $wp_customize->add_control( 'footer_email', array(
@@ -260,7 +292,7 @@ function lemon_media_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'footer_phone', array(
-        'default'           => '+91 98765 43210',
+        'default'           => '+91 97115 59909',
         'sanitize_callback' => 'sanitize_text_field',
     ) );
     $wp_customize->add_control( 'footer_phone', array(

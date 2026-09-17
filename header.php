@@ -19,71 +19,59 @@ if ( ! defined( 'ABSPATH' ) ) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header id="masthead" class="site-header">
-    <div class="container">
-        <!-- Site Branding / Logo -->
-        <div class="site-branding">
-            <?php if ( has_custom_logo() ) : ?>
-                <div class="site-logo"><?php the_custom_logo(); ?></div>
-            <?php else : ?>
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-title">
-                    Lemon<span>Media</span>
+<div class="min-h-screen overflow-x-hidden bg-background text-foreground">
+    <header class="site-header">
+        <div class="shell nav-row">
+            <!-- Brand Logo -->
+            <a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Lemon Media home', 'lemon-media' ); ?>">
+                <?php if ( has_custom_logo() ) : ?>
+                    <?php the_custom_logo(); ?>
+                <?php else : ?>
+                    <span class="lemon-mark" aria-hidden="true"><span></span></span>
+                    <span>Lemon <em>Media</em></span>
+                <?php endif; ?>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="<?php esc_attr_e( 'Main navigation', 'lemon-media' ); ?>">
+                <?php
+                if ( has_nav_menu( 'primary' ) ) {
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'primary',
+                            'container'      => false,
+                            'menu_class'     => 'nav-menu-list',
+                            'fallback_cb'    => false,
+                        )
+                    );
+                } else {
+                    ?>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/#work' ) ); ?>"><?php esc_html_e( 'Our Work', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/#clients' ) ); ?>"><?php esc_html_e( 'Our Clients', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/#story' ) ); ?>"><?php esc_html_e( 'Our Story', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/#services' ) ); ?>"><?php esc_html_e( 'Our Services', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/#join-team' ) ); ?>"><?php esc_html_e( 'Join Our Team', 'lemon-media' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact Us', 'lemon-media' ); ?></a>
+                    <?php
+                }
+                ?>
+            </nav>
+
+            <!-- Header CTA & Mobile Button -->
+            <?php
+            $btn_text = get_theme_mod( 'header_cta_btn_text', __( 'Start a project', 'lemon-media' ) );
+            $btn_link = get_theme_mod( 'header_cta_btn_link', '#contact' );
+            ?>
+            <?php if ( ! empty( $btn_text ) ) : ?>
+                <a class="dark-button desktop-cta" href="<?php echo esc_url( $btn_link ); ?>">
+                    <?php echo esc_html( $btn_text ); ?>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
                 </a>
             <?php endif; ?>
-        </div>
 
-        <!-- Main Navigation -->
-        <nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Primary Menu', 'lemon-media' ); ?>">
-            <?php
-            if ( has_nav_menu( 'primary' ) ) {
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'primary',
-                        'menu_class'     => 'nav-menu',
-                        'container'      => false,
-                    )
-                );
-            } else {
-                // Fallback Menu with exact requested hierarchy
-                ?>
-                <ul class="nav-menu">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#work' ) ); ?>"><?php esc_html_e( 'Our Work', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#clients' ) ); ?>"><?php esc_html_e( 'Our Clients', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#story' ) ); ?>"><?php esc_html_e( 'Our Story', 'lemon-media' ); ?></a></li>
-                    <li class="menu-item-has-children has-dropdown">
-                        <a href="<?php echo esc_url( home_url( '/#services' ) ); ?>"><?php esc_html_e( 'Our Services', 'lemon-media' ); ?></a>
-                        <ul class="sub-menu dropdown">
-                            <li><a href="<?php echo esc_url( home_url( '/#social-media' ) ); ?>"><?php esc_html_e( 'Our Social Media Services', 'lemon-media' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#content-creation' ) ); ?>"><?php esc_html_e( 'Content Creation', 'lemon-media' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#photography-videography' ) ); ?>"><?php esc_html_e( 'Photography & Videography', 'lemon-media' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#performance-marketing' ) ); ?>"><?php esc_html_e( 'Performance Marketing', 'lemon-media' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#influencer-marketing' ) ); ?>"><?php esc_html_e( 'Influencer Marketing', 'lemon-media' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#website-development' ) ); ?>"><?php esc_html_e( 'Website Development', 'lemon-media' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/#brand-packaging-design' ) ); ?>"><?php esc_html_e( 'Brand And Packaging Design', 'lemon-media' ); ?></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="<?php echo esc_url( home_url( '/#join-team' ) ); ?>"><?php esc_html_e( 'Join Our Team', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact Us', 'lemon-media' ); ?></a></li>
-                </ul>
-                <?php
-            }
-            ?>
-        </nav>
-
-        <!-- Header CTA Actions -->
-        <div class="header-actions">
-            <?php
-            $btn_text = get_theme_mod( 'header_cta_btn_text', __( 'Talk To Our Team', 'lemon-media' ) );
-            $btn_link = get_theme_mod( 'header_cta_btn_link', '#contact' );
-            if ( ! empty( $btn_text ) ) :
-                ?>
-                <a href="<?php echo esc_url( $btn_link ); ?>" class="btn-talk"><?php echo esc_html( $btn_text ); ?></a>
-            <?php endif; ?>
-
-            <button class="mobile-toggle" aria-label="<?php esc_attr_e( 'Toggle Menu', 'lemon-media' ); ?>">
-                ☰
+            <button class="menu-button" type="button" aria-label="<?php esc_attr_e( 'Open menu', 'lemon-media' ); ?>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
             </button>
         </div>
-    </div>
-</header>
+    </header>

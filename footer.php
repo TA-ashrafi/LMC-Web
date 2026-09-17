@@ -10,65 +10,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<footer id="colophon" class="site-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <!-- Col 1: About -->
-            <div class="footer-col">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-title" style="color:#fff; display:inline-block; margin-bottom:15px;">
-                    Lemon<span style="color:var(--primary-color);">Media</span>
+    <footer class="footer">
+        <div class="shell footer-grid">
+            <div>
+                <a class="brand footer-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <span class="lemon-mark" aria-hidden="true"><span></span></span>
+                    <span>Lemon <em>Media</em></span>
                 </a>
-                <p style="margin-bottom: 20px;">
-                    <?php echo esc_html( get_theme_mod( 'footer_about_text', __( 'Lemon Media Company is a full-service creative agency helping brands scale through strategic content, digital marketing, and design.', 'lemon-media' ) ) ); ?>
-                </p>
+                <p><?php echo esc_html( get_theme_mod( 'footer_about_text', __( 'Full-service digital marketing and talent management agency.', 'lemon-media' ) ) ); ?></p>
             </div>
 
-            <!-- Col 2: Quick Links -->
-            <div class="footer-col">
-                <h4><?php esc_html_e( 'Quick Links', 'lemon-media' ); ?></h4>
-                <ul class="footer-links">
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#work' ) ); ?>"><?php esc_html_e( 'Our Work', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#clients' ) ); ?>"><?php esc_html_e( 'Our Clients', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#story' ) ); ?>"><?php esc_html_e( 'Our Story', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#join-team' ) ); ?>"><?php esc_html_e( 'Join Our Team', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact Us', 'lemon-media' ); ?></a></li>
-                </ul>
+            <div>
+                <p class="footer-label"><?php esc_html_e( 'Explore', 'lemon-media' ); ?></p>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'lemon-media' ); ?></a>
+                <a href="<?php echo esc_url( home_url( '/#work' ) ); ?>"><?php esc_html_e( 'Our Work', 'lemon-media' ); ?></a>
+                <a href="<?php echo esc_url( home_url( '/#clients' ) ); ?>"><?php esc_html_e( 'Our Clients', 'lemon-media' ); ?></a>
+                <a href="<?php echo esc_url( home_url( '/#story' ) ); ?>"><?php esc_html_e( 'Our Story', 'lemon-media' ); ?></a>
+                <a href="<?php echo esc_url( home_url( '/#services' ) ); ?>"><?php esc_html_e( 'Our Services', 'lemon-media' ); ?></a>
+                <a href="<?php echo esc_url( home_url( '/#join-team' ) ); ?>"><?php esc_html_e( 'Join Our Team', 'lemon-media' ); ?></a>
+                <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>"><?php esc_html_e( 'Contact Us', 'lemon-media' ); ?></a>
             </div>
 
-            <!-- Col 3: Services -->
-            <div class="footer-col">
-                <h4><?php esc_html_e( 'Our Services', 'lemon-media' ); ?></h4>
-                <ul class="footer-links">
-                    <li><a href="<?php echo esc_url( home_url( '/#social-media' ) ); ?>"><?php esc_html_e( 'Social Media', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#content-creation' ) ); ?>"><?php esc_html_e( 'Content Creation', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#photography-videography' ) ); ?>"><?php esc_html_e( 'Photography & Video', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#performance-marketing' ) ); ?>"><?php esc_html_e( 'Performance Ads', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#influencer-marketing' ) ); ?>"><?php esc_html_e( 'Influencers', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#website-development' ) ); ?>"><?php esc_html_e( 'Web Development', 'lemon-media' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/#brand-packaging-design' ) ); ?>"><?php esc_html_e( 'Branding & Packaging', 'lemon-media' ); ?></a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Contact Info / Widgets -->
-            <div class="footer-col">
-                <h4><?php esc_html_e( 'Get In Touch', 'lemon-media' ); ?></h4>
-                <p><strong>Email:</strong> <?php echo esc_html( get_theme_mod( 'footer_email', 'contact@lemonmediaco.com' ) ); ?></p>
-                <p style="margin-top:10px;"><strong>Phone:</strong> <?php echo esc_html( get_theme_mod( 'footer_phone', '+91 98765 43210' ) ); ?></p>
-
-                <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
-                    <div style="margin-top:20px;">
-                        <?php dynamic_sidebar( 'footer-1' ); ?>
-                    </div>
-                <?php endif; ?>
+            <div>
+                <p class="footer-label"><?php esc_html_e( 'Connect', 'lemon-media' ); ?></p>
+                <a href="https://www.instagram.com/lemonmediacompany" target="_blank" rel="noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg> Instagram
+                </a>
+                <a href="https://www.linkedin.com/company/lemon-media-company/" target="_blank" rel="noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg> LinkedIn
+                </a>
+                <a href="tel:<?php echo esc_attr( get_theme_mod( 'footer_phone', '+91 97115 59909' ) ); ?>">
+                    <?php echo esc_html( get_theme_mod( 'footer_phone', '+91 97115 59909' ) ); ?>
+                </a>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p><?php echo esc_html( get_theme_mod( 'footer_copyright', '© 2026 Lemon Media Company. All Rights Reserved.' ) ); ?></p>
+        <div class="shell footer-bottom">
+            <span><?php echo esc_html( get_theme_mod( 'footer_copyright', '© 2026 Lemon Media Company' ) ); ?></span>
+            <span><?php esc_html_e( 'Delhi · Mumbai · Everywhere', 'lemon-media' ); ?></span>
         </div>
-    </div>
-</footer>
+    </footer>
+</div><!-- .min-h-screen -->
 
 <?php wp_footer(); ?>
 </body>

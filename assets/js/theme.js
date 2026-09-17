@@ -1,32 +1,42 @@
 /**
  * Main Theme JavaScript File
- * Handles Mobile Menu Toggle, Header Scroll, and Interactivity
+ * Handles Mobile Navigation Toggle & Dynamic Interactions
  */
 
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const expanded = mobileToggle.getAttribute('aria-expanded') === 'true' || false;
-            mobileToggle.setAttribute('aria-expanded', !expanded);
+    const menuButtons = document.querySelectorAll('.menu-button');
+    menuButtons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            let nav = document.querySelector('.mobile-nav');
+            if (nav) {
+                nav.remove();
+                return;
+            }
+            const siteHeader = document.querySelector('.site-header');
+            if (siteHeader) {
+                siteHeader.insertAdjacentHTML(
+                    'beforeend',
+                    '<nav class="mobile-nav">' +
+                    '<a href="#work">Work ↗</a>' +
+                    '<a href="#services">Services ↗</a>' +
+                    '<a href="#studio">Studio ↗</a>' +
+                    '<a href="#process">Process ↗</a>' +
+                    '<a href="#contact">Start a project ↗</a>' +
+                    '</nav>'
+                );
+            }
         });
-    }
+    });
 
-    // Dropdown toggle for mobile
-    const dropdownItems = document.querySelectorAll('.nav-menu .menu-item-has-children, .nav-menu .has-dropdown');
-    dropdownItems.forEach(function(item) {
-        const link = item.querySelector('a');
-        if (window.innerWidth <= 991 && link) {
-            link.addEventListener('click', function(e) {
-                if (item.querySelector('ul')) {
-                    e.preventDefault();
-                    item.classList.toggle('hover');
-                }
-            });
+    // Close Mobile Nav when clicking an internal link
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.mobile-nav a')) {
+            const mobileNav = document.querySelector('.mobile-nav');
+            if (mobileNav) {
+                mobileNav.remove();
+            }
         }
     });
 
